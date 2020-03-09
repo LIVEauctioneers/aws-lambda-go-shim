@@ -22,7 +22,7 @@ CLEAN_TESTS = $(patsubst %,%.clean,$(TESTS))
 CLEAN_BENCHS = $(patsubst %,%.clean,$(BENCHS))
 
 build:
-	@docker build -t eawsy/aws-lambda-go-shim:latest .
+	@docker build -t liveauctioneers/aws-lambda-go-shim:latest .
 
 test: $(TESTS)
 
@@ -38,7 +38,7 @@ $(TESTS):
 		$(foreach GP,$(subst :, ,$(GOPATH)),-v $(GP):$(GP))\
 		-v $(CURDIR):$(CURDIR)\
 		-w $(CURDIR)/tests/$@\
-		eawsy/aws-lambda-go-shim:latest python -B -m unittest discover -f || exit 2;\
+		liveauctioneers/aws-lambda-go-shim:latest python -B -m unittest discover -f || exit 2;\
 	done
 
 bench: $(BENCHS)

@@ -49,7 +49,7 @@ docker:
 		-v $(CURDIR):$(CURDIR):Z\
 		$(foreach GP,$(subst :, ,$(GOPATH)),-v $(GP):$(GP)):Z\
 		-w $(CURDIR)\
-		eawsy/aws-lambda-go-shim:latest make -f $(MAKEFILE) all
+		liveauctioneers/aws-lambda-go-shim:latest make -f $(MAKEFILE) all
 
 .PHONY: docker
 
